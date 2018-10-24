@@ -1,28 +1,28 @@
-import React, { Component } from 'react';
-import { connect } from 'react-redux';
-import {Link} from 'react-router-dom';
-import {Switch} from 'react-router-dom'
+import React, { Component } from "react";
+import { connect } from "react-redux";
+import { Link } from "react-router-dom";
+import { updateInput } from "../../ducks/reducer";
 
-import { updateInput } from '../../ducks/reducer';
-
-class page2 extends component {
-  constructor() {
-    super();
+class page2 extends Component {
+  constructor(props) {
+    super(props);
     this.state = {
       names: []
     };
   }
 
-submitName = () => { 
-    this.setState({names: [...this.state.names, props.name]})}
-}
+  submitName = () => {
+    this.setState({ names: [...this.state.names, this.props.name] });
+  };
 
   render() {
-      const nameMap = this.state.names.map((e,i)=> {
-          return <div key={i}>
-              <p>{e}</p>
-          </div>
-      })
+    const nameMap = this.state.names.map((e, i) => {
+      return (
+        <div key={i}>
+          <p>{e}</p>
+        </div>
+      );
+    });
     return (
       <div>
         <h1>Page 2</h1>
@@ -34,10 +34,10 @@ submitName = () => {
         />
         <button onClick={() => this.submitName()}>Submit</button>
         {nameMap}
-        <div className={bottom_links}>
-            <Link to="/">
+        <div className="bottom_links">
+          <Link to="/">
             <p>Home</p>
-            </Link>
+          </Link>
         </div>
       </div>
     );
